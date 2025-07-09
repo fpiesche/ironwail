@@ -510,6 +510,14 @@ void S_StartSound (int entnum, int entchannel, sfx_t *sfx, vec3_t origin, float 
 			break;
 		}
 	}
+	// Print closed caption
+	char dir_indicator[2];
+	if (target_chan->leftvol > target_chan->rightvol) {
+		dir_indicator = "<<";
+	} else {
+		dir_indicator = ">>";
+	}
+	Con_Printf("%s %s %s", dir_indicator, sfx->name, dir_indicator);
 }
 
 void S_StopSound (int entnum, int entchannel)
