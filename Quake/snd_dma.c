@@ -511,11 +511,12 @@ void S_StartSound (int entnum, int entchannel, sfx_t *sfx, vec3_t origin, float 
 		}
 	}
 	// Print closed caption
-	char dir_indicator[2];
 	if (target_chan->leftvol > target_chan->rightvol) {
-		dir_indicator = "<<";
+		char dir_indicator[2] = "<<";
+	} else if (target_chan->leftvol < target_chan->rightvol) {
+		char dir_indicator[2] = ">>";
 	} else {
-		dir_indicator = ">>";
+		char dir_indicator[2] = "  ";
 	}
 	Con_Printf("%s %s %s", dir_indicator, sfx->name, dir_indicator);
 }
